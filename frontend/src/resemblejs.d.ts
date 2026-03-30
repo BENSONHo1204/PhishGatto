@@ -1,0 +1,1 @@
+resemblejs.d.ts

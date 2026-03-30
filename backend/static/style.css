@@ -1,0 +1,205 @@
+/* ================================
+   Academic Dark Theme (Student-Friendly)
+   ================================ */
+
+:root {
+    --bg-main: #0b1020;
+    --bg-card: #11162a;
+    --border-soft: #1f2540;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --accent-primary: #3b82f6;   /* blue */
+    --accent-warning: #facc15;   /* yellow */
+    --accent-danger: #ef4444;    /* red */
+    --accent-safe: #22c55e;      /* green */
+}
+
+/* ---------- Base ---------- */
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 28px 30px 36px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border-soft);
+}
+
+/* ---------- Typography ---------- */
+
+h1 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 18px;
+    margin-top: 0;
+    color: #c7d2fe;
+}
+
+h4 {
+    margin-bottom: 6px;
+    color: #bfdbfe;
+}
+
+p {
+    margin-top: 4px;
+    margin-bottom: 14px;
+    color: var(--text-muted);
+}
+
+/* ---------- Form ---------- */
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: #0b1020;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+/* ---------- Buttons ---------- */
+
+.button-row {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: var(--accent-primary);
+    color: #020617;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button.secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-soft);
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(59,130,246,0.35);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ---------- Status ---------- */
+
+.status {
+    margin-top: 14px;
+    font-size: 14px;
+    min-height: 18px;
+    color: var(--text-muted);
+}
+
+.status.error {
+    color: var(--accent-danger);
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    margin-top: 20px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #0e1326;
+    border: 1px solid var(--border-soft);
+}
+
+.card ul {
+    padding-left: 18px;
+}
+
+.card li {
+    margin-bottom: 6px;
+}
+
+/* ---------- Risk Badge ---------- */
+
+.risk-badge {
+    float: right;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.risk-low {
+    color: var(--accent-safe);
+    border: 1px solid var(--accent-safe);
+}
+
+.risk-medium {
+    color: var(--accent-warning);
+    border: 1px solid var(--accent-warning);
+}
+
+.risk-high {
+    color: var(--accent-danger);
+    border: 1px solid var(--accent-danger);
+}
+
+/* ---------- Chart ---------- */
+
+canvas {
+    background: #0b1020;
+    border-radius: 12px;
+    padding: 8px;
+    border: 1px solid var(--border-soft);
+}
+
+/* ---------- Utilities ---------- */
+
+.hidden {
+    display: none;
+}
+
+.subtitle {
+    margin-top: -6px;
+    margin-bottom: 18px;
+    color: var(--text-muted);
+    font-size: 14px;
+}

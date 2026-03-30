@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GattoBank Secure Login</title>
+
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --accent: #10b981;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .header-banner {
+      background: var(--primary);
+      color: white;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .brand h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .brand span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 10px 0 20px;
+      font-size: 24px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      font-size: 12px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header-banner">
+      Secure Access Portal — Account Protection Mode
+    </div>
+
+    <div class="card">
+
+      <div class="brand">
+        <h2>GattoBank</h2>
+        <span>Official Online Banking Portal</span>
+      </div>
+
+      <h1>Secure Login</h1>
+
+      <form action="/login" method="post">
+
+        <label>User ID</label>
+        <input name="user" placeholder="Enter User ID" />
+
+        <label>Email</label>
+        <input name="email" placeholder="name@example.com" />
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="••••••••" />
+
+        <button class="btn" type="submit">Sign In</button>
+
+      </form>
+
+      <div class="footer-note">
+        Always verify website authenticity before entering credentials.
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
