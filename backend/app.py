@@ -86,7 +86,10 @@ def validate_and_normalize_url(raw_url: str):
 # --------------------------------
 # API Endpoint
 # --------------------------------
-@app.route("/api/scan", methods=["POST"])
+@app.route("/")
+def home():
+    return "Backend is running"
+
 def scan_url():
     data = request.get_json()
 
@@ -98,21 +101,21 @@ def scan_url():
         return jsonify({"error": error}), 400
 
     try:
-        # 🔍 ML Classification
+        # ML Classification
         ml_score, ml_reasons = predict_url(validated_url)
 
-        # 🌐 Semantic Analysis
+        # Semantic Analysis
         semantic_score, semantic_reasons = analyze_semantics(validated_url)
 
-        # 🌍 Web Content Analysis
+        # Web Content Analysis
         page_data = scraper.fetch(validated_url)
 
-        # 🔵 NEW — Visual Similarity Section
+        # NEW — Visual Similarity Section
         visual_score = 0
         visual_reasons = []
         visual_analysis = None
 
-        baseline_url = "http://localhost:5173/visual_tests/original_login.html"
+        baseline_url = baseline_url = "https://bensonho1204.github.io/PhishGatto/visual_tests/original_login.html"
 
         # Only run visual similarity for controlled test pages
         if "visual_tests" in validated_url and validated_url != baseline_url:
@@ -132,7 +135,7 @@ def scan_url():
                 "visualReasons": visual_reasons,
             }
 
-        # 🧮 Threat Scoring
+        # Threat Scoring
         risk_result = compute_risk(
             ml_score=ml_score,
             semantic_score=semantic_score,
@@ -163,7 +166,7 @@ def scan_url():
             "details": str(e)
         }), 500
 
-    # ✅ FINAL RESPONSE (LiveResults-ready)
+    # FINAL RESPONSE (LiveResults-ready)
     response = {
         "url": validated_url,
         "score": risk_result["score"],
@@ -182,4 +185,4 @@ def scan_url():
 # Run server
 # --------------------------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=PORT)
+    app.run(host="0.0.0.0", port=PORT, debug=False)
