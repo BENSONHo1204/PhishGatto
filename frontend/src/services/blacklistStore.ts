@@ -11,12 +11,7 @@ export async function addToBlacklist(domain: string) {
 }
 
 export async function getBlacklist(): Promise<string[]> {
-  const res = await fetch(`${API}/getBlacklist.php`);
-  const data = await res.json();
-
-  if (!Array.isArray(data.data)) return [];
-
-  return data.data.map((item: any) => item.domain);
+  return [];
 }
 
 export async function removeFromBlacklist(domain: string) {
