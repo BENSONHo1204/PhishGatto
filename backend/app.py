@@ -17,7 +17,7 @@ PORT = int(os.environ.get("PORT", 5000))
 # App setup
 # --------------------------------
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "https://bensonho1204.github.io"}})
 
 scraper = WebScraper()
 
