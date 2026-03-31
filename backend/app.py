@@ -11,6 +11,8 @@ from services.threat_scorer import compute_risk
 from services.web_scraper import WebScraper
 from services.visual_similarity import compute_visual_similarity
 
+PORT = int(os.environ.get("PORT", 5000))
+
 # --------------------------------
 # App setup
 # --------------------------------
@@ -180,4 +182,4 @@ def scan_url():
 # Run server
 # --------------------------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=PORT)
