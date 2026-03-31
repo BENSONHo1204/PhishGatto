@@ -130,7 +130,7 @@ try {
 
   await new Promise((r) => setTimeout(r, 300));
 
-  const res = await fetch("http://phishgatto-production.up.railway.app/api/scan", {
+  const res = await fetch("https://phishgatto-production.up.railway.app/api/scan", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url: trimmedUrl }),

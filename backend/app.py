@@ -90,6 +90,7 @@ def validate_and_normalize_url(raw_url: str):
 def home():
     return "Backend is running"
 
+@app.route("/api/scan", methods=["POST"])
 def scan_url():
     data = request.get_json()
 
