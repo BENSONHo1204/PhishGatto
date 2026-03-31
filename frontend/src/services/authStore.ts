@@ -11,59 +11,25 @@ const CURRENT_USER_KEY = "phish_current_user";
 /* -----------------------------
  * REGISTER USER
  * ----------------------------- */
-export async function registerUser(
-  username: string,
-  email: string,
-  password: string
-) {
-
-  const formData = new FormData();
-
-  formData.append("username", username);
-  formData.append("email", email);
-  formData.append("password", password);
-
-  const res = await fetch(
-    "http://localhost/PhishGatto/backend/api/register.php",
-    {
-      method: "POST",
-      body: formData
-    }
-  );
-
-  return await res.json();
+export async function registerUser(..._args: any[]) {
+  return {
+    status: "success",
+    message: "Registered successfully"
+  };
 }
 
 /* -----------------------------
  * LOGIN USER
  * ----------------------------- */
-export async function loginUser(email: string, password: string) {
-
-  const formData = new FormData();
-
-  formData.append("email", email);
-  formData.append("password", password);
-
-  const res = await fetch(
-    "http://localhost/PhishGatto/backend/api/login.php",
-    {
-      method: "POST",
-      body: formData
-    }
-  );
-
-  const data = await res.json();
-
-  if (data.status === "success" && data.user) {
-    localStorage.setItem(
-      CURRENT_USER_KEY,
-      JSON.stringify(data.user)
-    );
-    return data.user;
-  }
-
-  return null;
+export async function loginUser(email: string, _password: string) {
+  return {
+    id: "1",
+    username: "Demo User",
+    email: email,
+    role: email === "admin@test.com" ? "admin" : "user"
+  };
 }
+
 
 /* -----------------------------
  * CURRENT USER
@@ -99,52 +65,40 @@ export function isAdmin(): boolean {
  * GET ALL USERS (Admin)
  * ----------------------------- */
 export async function getAllUsers() {
-  const res = await fetch(
-    "http://localhost/PhishGatto/backend/api/getUsers.php"
-  );
-
-  const data = await res.json();
-  return Array.isArray(data.data) ? data.data : [];
+  return [
+    {
+      id: "1",
+      username: "Demo User",
+      email: "user@test.com",
+      role: "user"
+    },
+    {
+      id: "2",
+      username: "Admin",
+      email: "admin@test.com",
+      role: "admin"
+    }
+  ];
 }
+
 
 /* -----------------------------
  * REMOVE USER (Admin)
  * ----------------------------- */
-export async function removeUser(userId: string) {
-  const formData = new FormData();
-  formData.append("user_id", userId);
-
-  const res = await fetch(
-    "http://localhost/PhishGatto/backend/api/removeUser.php",
-    {
-      method: "POST",
-      body: formData
-    }
-  );
-
-  return await res.json();
+export async function removeUser(_userId: string) {
+  return { status: "success" };
 }
 
 /* -----------------------------
  * CHANGE PASSWORD
  * ----------------------------- */
 export async function changePassword(
-  userId: string,
-  currentPassword: string,
-  newPassword: string
+  _userId: string,
+  _currentPassword: string,
+  _newPassword: string
 ) {
-  const formData = new FormData();
-  formData.append("user_id", userId);
-  formData.append("current_password", currentPassword);
-  formData.append("new_password", newPassword);
-
-  const res = await fetch(
-    "http://localhost/PhishGatto/backend/api/changePassword.php",
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
-
-  return await res.json();
+  return {
+    status: "success",
+    message: "Password changed successfully"
+  };
 }

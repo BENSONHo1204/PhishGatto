@@ -55,7 +55,7 @@ useEffect(() => {
 
   // ===== HYBRID VISUAL SIMILARITY STATE =====
   const baselineUrl =
-    "http://localhost:5173/visual_tests/original_login.html";
+    "https://bensonho1204.github.io/PhishGatto/visual_tests/original_login.html";
 
   const [pixelSim, setPixelSim] = useState<number | null>(null);
 

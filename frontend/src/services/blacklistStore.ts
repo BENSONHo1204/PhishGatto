@@ -2,8 +2,8 @@ export async function addToBlacklist(domain: string) {
   console.log("Blacklist add disabled:", domain);
 }
 
-export async function getBlacklist(): Promise<string[]> {
-  return [];
+export async function getBlacklist() {
+  return ["phishing-site.com"];
 }
 
 export async function removeFromBlacklist(domain: string) {
