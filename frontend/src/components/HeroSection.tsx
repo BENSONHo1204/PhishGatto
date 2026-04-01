@@ -1,4 +1,4 @@
-import { isBlacklisted, getBlacklist } from "../services/blacklistStore";
+import { isBlacklisted} from "../services/blacklistStore";
 import { useState } from "react";
 import type { ScanResult, RiskLevel } from "../types";
 import catLogo from "../assets/phishgatto-cat.png";
@@ -82,13 +82,13 @@ export default function HeroSection(props: HeroSectionProps){const{
     onDemoScan(result);
   };
 
-  /* -----------------------------
-   * LIVE SCAN (backend)
-   * ----------------------------- */
-  const runLiveScan = async () => {
-if (!url.trim()) {
-setError("Please enter a URL to proceed");
-return;
+/* -----------------------------
+ * LIVE SCAN (backend)
+ * ----------------------------- */
+const runLiveScan = async () => {
+  if (!url.trim()) {
+  setError("Please enter a URL to proceed");
+  return;
 }
 
 const trimmedUrl = url.trim();
@@ -105,28 +105,31 @@ try {
   // simulate step delay (UX)
   await new Promise((r) => setTimeout(r, 300));
 
-  const blacklist = await getBlacklist();
+  // check blacklist properly
+  const isBlocked = await isBlacklisted(trimmedUrl);
 
-  if (isBlacklisted(trimmedUrl, blacklist)) {
-    const blacklistResult: ScanResult = {
-      url: trimmedUrl,
-      riskLevel: "phishing",
-      score: 95,
-      reasons: [
-        "URL matches a blacklisted domain",
-        "This domain was manually flagged by the administrator",
-      ],
-      timestamp: new Date().toLocaleString(),
-    };
+if (isBlocked) {
+  const blacklistResult: ScanResult = {
+    url: trimmedUrl,
+    riskLevel: "phishing",
+    score: 95,
+    reasons: [
+      "URL matches a blacklisted domain",
+      "This domain was manually flagged by the administrator",
+    ],
+    timestamp: new Date().toLocaleString(),
+  };
 
-    if (!isLoggedIn) {
-      setGuestScanCount(increaseGuestScanCount());
-    }
-
-    setLoading(false);
-    onLiveScan(blacklistResult);
-    return;
+  // ✅ update guest scan count if not logged in
+  if (!isLoggedIn) {
+    setGuestScanCount(increaseGuestScanCount());
   }
+
+  // ✅ stop loading + return result
+  setLoading(false);
+  onLiveScan(blacklistResult);
+  return;
+}
 
   await new Promise((r) => setTimeout(r, 300));
 

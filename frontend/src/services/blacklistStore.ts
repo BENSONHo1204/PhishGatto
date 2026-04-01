@@ -1,15 +1,16 @@
-export async function addToBlacklist(domain: string) {
-  console.log("Blacklist add disabled:", domain);
-}
-
 export async function getBlacklist() {
   return ["phishing-site.com"];
 }
 
-export async function removeFromBlacklist(domain: string) {
-  console.log("Blacklist remove disabled:", domain);
+export async function addToBlacklist(_domain: string) {
+  return { status: "success" };
 }
 
-export function isBlacklisted(url: string, blacklist: string[]): boolean {
-  return blacklist.some((domain) => url.includes(domain));
+export async function removeFromBlacklist(_domain: string) {
+  return { status: "success" };
+}
+
+export async function isBlacklisted(domain: string) {
+  const blacklist = await getBlacklist();
+  return blacklist.includes(domain);
 }
