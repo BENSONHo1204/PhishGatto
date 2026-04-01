@@ -11,7 +11,7 @@ from services.threat_scorer import compute_risk
 from services.web_scraper import WebScraper
 from services.visual_similarity import compute_visual_similarity
 
-PORT = int(os iron.get("PORT", 5000))
+PORT = int(os.environ.get("PORT", 5000))
 
 # --------------------------------
 # App setup
